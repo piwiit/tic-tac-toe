@@ -34,7 +34,8 @@ h1 {
   width: 300px;
   display: flex;
   flex-wrap: wrap;
-  margin: 4rem;
+  justify-content: center;
+  margin: 4rem auto;
 }
 
 .white {
