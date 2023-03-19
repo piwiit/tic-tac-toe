@@ -25,8 +25,9 @@ function playGame(e) {
   if (checkwin(playerTurn)) {
     gameUpdateStatus('win' + playerTurn);
     return endGame();
-  } else {
-    console.log('pas win');
+  } else if (checkDraw()) {
+    gameUpdateStatus('draw');
+    return endGame();
   }
   gameUpdateStatus(playerTurn);
   playerTurn === playerOne ? (playerTurn = playerTwo) : (playerTurn = playerOne);
@@ -37,6 +38,12 @@ function checkwin(playerTurn) {
     return combinaison.every((index) => {
       return cells[index].innerHTML == playerTurn;
     });
+  });
+}
+
+function checkDraw() {
+  return [...cells].every((cell) => {
+    return cell.innerHTML == playerOne || cell.innerHTML == playerTwo;
   });
 }
 
