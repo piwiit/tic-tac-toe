@@ -52,11 +52,11 @@ function gameUpdateStatus(status) {
 
   switch (status) {
     case 'X':
-      statusText = 'Au tour du joueur 1 (X)';
+      statusText = 'Au tour du joueur 2 (O)';
       break;
 
     case 'O':
-      statusText = 'Au tour du joueur 2 (O)';
+      statusText = 'Au tour du joueur 1 (X)';
       break;
 
     case 'winX':
@@ -78,4 +78,8 @@ function gameUpdateStatus(status) {
 
 function endGame() {
   gameEnd.style.display = 'block';
+}
+
+function reloadGame() {
+  window.location.reload();
 }
