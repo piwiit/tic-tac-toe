@@ -8,14 +8,36 @@ cells.forEach((cell) => {
   cell.addEventListener('click', playGame, { once: true });
 });
 
+let winnPatern = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
 function playGame(e) {
   e.target.innerHTML = playerTurn;
-  updateStatus();
+
+  if (checkwin(playerTurn)) {
+    gameUpdateStatus('win' + playerTurn);
+    return endGame();
+  } else {
+    console.log('pas win');
+  }
+  gameUpdateStatus(playerTurn);
+  playerTurn === playerOne ? (playerTurn = playerTwo) : (playerTurn = playerOne);
 }
 
-function updateStatus() {
-  playerTurn === playerOne ? (playerTurn = playerTwo) : (playerTurn = playerOne);
-  gameUpdateStatus(playerTurn);
+function checkwin(playerTurn) {
+  return winnPatern.some((combinaison) => {
+    return combinaison.every((index) => {
+      return cells[index].innerHTML == playerTurn;
+    });
+  });
 }
 
 function gameUpdateStatus(status) {
@@ -44,4 +66,9 @@ function gameUpdateStatus(status) {
   }
 
   gameStatus.innerHTML = statusText;
+  endGameStatus.innerHTML = statusText;
+}
+
+function endGame() {
+  gameEnd.style.display = 'block';
 }
