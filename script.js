@@ -23,11 +23,11 @@ function gameUpdateStatus(status) {
 
   switch (status) {
     case 'X':
-      statusText = 'Au tour du joueur 2 (O)';
+      statusText = 'Au tour du joueur 1 (X)';
       break;
 
     case 'O':
-      statusText = 'Au tour du joueur 1 (X)';
+      statusText = 'Au tour du joueur 2 (O)';
       break;
 
     case 'winX':
